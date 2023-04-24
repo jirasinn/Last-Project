@@ -35,9 +35,6 @@
 <?php
 
           $date = new DateTime();
-          echo $date->format(DateTime::RFC1123) . "\n";
-          echo "Time in Bangkok\n";
-          $date2 = new DateTime();
           $date2->setTimezone(new DateTimeZone('Asia/Bangkok'));
           echo $date2->format(DateTime::RFC1123) . "\n";
 ?>
