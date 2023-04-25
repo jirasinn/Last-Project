@@ -30,54 +30,61 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-secondary me-2">EN</button>
+          <button type="button" class="btn btn-outline-secondary ">EN</button>
+          <button type="button" class="btn btn-outline-secondary ">TH</button>
           <button type="button" class="btn btn-warning">Time</button>
+
 <!-- Date time -->
-<form name="checkForm">
-<input type="text" class="Input" name="txtTime" id="txtTime" maxlength="200" value="" />
-<script>
-function show(){
-var Digital=new Date()
-var hours=Digital.getHours()
-var minutes=Digital.getMinutes()
-var seconds=Digital.getSeconds()
-var dn="AM"
-if (hours>=12)
-dn="PM"
-if (hours>12)
-hours=hours-12
-if (hours==0)
-hours=12
-if (minutes<=9)
-minutes="0"+minutes
-if (seconds<=9)
-seconds="0"+seconds
-document.checkForm.txtTime.value=hours+":"+minutes+":"
-+seconds+" "+dn
-setTimeout("show()",1000)
+<div id="local_time" class="btn btn-outline-secondary ">&nbsp;</div>
+ 
+<?php
+    $current_local_time = date("Y")."/".date("m")."/".date("d")." ".date("H:i:s");
+?>
+ 
+ <script language="JavaScript1.2">
+<!--
+function local_date(now_time) {
+    current_local_time = new Date();
+ 
+    local_time.innerHTML = current_local_time.getDate() + "/" + (current_local_time.getMonth()+1) + "/" + current_local_time.getFullYear() + " " + current_local_time.getHours() + ":" + current_local_time.getMinutes() + ":" +current_local_time.getSeconds();
+ 
+    setTimeout("local_date()",1000);
 }
-show()
+ 
+setTimeout("local_date()",1000);
+//-->
 </script>
-</form>
 <!-- End Date time -->
+
         </div>
       </div>
     </div>
   </header>
 <!-- End head -->
 
+<!-- กรอบซ้าย -->
 <div class="container-fluid pb-3">
     <br>
     <div class="d-grid gap-4" style="grid-template-columns: 1fr 2fr;">
       <div class="bg-body-tertiary border rounded-3">
+
+  <div class="card" style="width: 18rem;">
+  <img src="https://play-lh.googleusercontent.com/gfXcCyd98v83B3_OAr77S3EwsIGg8LyCYLuItRXhyi3SCHEeQg0kfL4M9uuksPL_rD8" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Scan Here</p>
+  </div>
+</div>
+
         <br><br><br><br><br><br><br><br><br><br>
       </div>
-      <div class="bg-body-tertiary border rounded-3">
-        
+<!-- กรอบซ้ายจบ -->
+<!-- กรอบขวา -->
+      <div class="bg-body-tertiary border rounded-3">  
         <br><br><br><br><br><br><br><br><br><br>
       </div>
     </div>
   </div>
+<!-- กรอบขวาจบ -->
 
     <script src="js/bootstrap.min.js"></script>
 </body>
