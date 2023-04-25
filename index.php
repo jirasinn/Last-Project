@@ -32,12 +32,34 @@
         <div class="text-end">
           <button type="button" class="btn btn-outline-secondary me-2">EN</button>
           <button type="button" class="btn btn-warning">Time</button>
-<?php
-
-          $date = new DateTime();
-          $date2->setTimezone(new DateTimeZone('Asia/Bangkok'));
-          echo $date2->format(DateTime::RFC1123) . "\n";
-?>
+<!-- Date time -->
+<form name="checkForm">
+<input type="text" class="Input" name="txtTime" id="txtTime" maxlength="200" value="" />
+<script>
+function show(){
+var Digital=new Date()
+var hours=Digital.getHours()
+var minutes=Digital.getMinutes()
+var seconds=Digital.getSeconds()
+var dn="AM"
+if (hours>=12)
+dn="PM"
+if (hours>12)
+hours=hours-12
+if (hours==0)
+hours=12
+if (minutes<=9)
+minutes="0"+minutes
+if (seconds<=9)
+seconds="0"+seconds
+document.checkForm.txtTime.value=hours+":"+minutes+":"
++seconds+" "+dn
+setTimeout("show()",1000)
+}
+show()
+</script>
+</form>
+<!-- End Date time -->
         </div>
       </div>
     </div>
