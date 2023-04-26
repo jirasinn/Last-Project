@@ -18,11 +18,7 @@
         
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-dark">Features</a></li>
-          <li><a href="#" class="nav-link px-2 text-dark">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-dark">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-dark">About</a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">ระบบใช้บริการห้องบริการคอมพิวเตอร์ สำนักคอมพิวเตอร์ มหาวิทยาลัยมหาสารคาม</a></li>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -42,7 +38,7 @@
 ?>
  
  <script language="JavaScript1.2">
-<!--
+
 function local_date(now_time) {
     current_local_time = new Date();
  
@@ -61,17 +57,36 @@ setTimeout("local_date()",1000);
     </div>
   </header>
 <!-- End head -->
+<section class="py-8 bg-light-gradient border-top border-info border-5">
+        <div class="bg-holder overlay overlay-light" style="background-image:url(../p/public/assets/img/gallery/header-bg.png);background-size:cover;">
+        </div>
+
+       
+
 
 <!-- กรอบซ้าย -->
 <div class="container-fluid pb-3">
     <br>
     <div class="d-grid gap-4" style="grid-template-columns: 1fr 2fr;">
       <div class="bg-body-tertiary border rounded-3">
-
-  <div class="card" style="width: 18rem;">
-  <img src="https://play-lh.googleusercontent.com/gfXcCyd98v83B3_OAr77S3EwsIGg8LyCYLuItRXhyi3SCHEeQg0kfL4M9uuksPL_rD8" class="card-img-top" alt="...">
+<!-- input id -->
+<div class="container-fluid pb-3">
+      <form action="" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+    	<label  class="form-label"  for="s_id">รหัสนิสิต</label>
+        <input class="form-control" type="text" placeholder="รหัสนิสิต" name="s_id"  id="s_id"  type="text" value="" required autofocus>
+        
+        <button id="submit" type="submit" name="upload" class="btn btn-primary"style="color:white ;">ลงชื่อเข้าใช้</button>
+        </div>
+    </div>
+    </form>
+<!-- End input -->
+  <div class="container" style="width: 25rem;">
+  <div class="card">
+  <img src="https://play-lh.googleusercontent.com/gfXcCyd98v83B3_OAr77S3EwsIGg8LyCYLuItRXhyi3SCHEeQg0kfL4M9uuksPL_rD8" class="card-img-top " alt="...">
   <div class="card-body">
-    <p class="card-text">Scan Here</p>
+    <p class="btn btn-danger fw-bold fs-2 fs-lg-4 lh-sm mb-2 text-center ">แสกนเข้าใช้งานที่นี่ !</p>
+  </div>
   </div>
 </div>
 
@@ -79,12 +94,24 @@ setTimeout("local_date()",1000);
       </div>
 <!-- กรอบซ้ายจบ -->
 <!-- กรอบขวา -->
-      <div class="bg-body-tertiary border rounded-3">  
+      <div class="bg-body-tertiary border rounded-3">
+          
+      <!--  -->
+      <form action="" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+    	<label  class="form-label">รายชื่อนิสิต</label>
+        <input class="form-control" type="number" placeholder="รายชื่อนิสิต" name="s_id" value="<?=$data['s_id']?>">
+    </div>
+    </form>
+      <!--  -->
         <br><br><br><br><br><br><br><br><br><br>
       </div>
     </div>
   </div>
 <!-- กรอบขวาจบ -->
+<section class="py-8 bg-light-gradient border-bottom border-info border-5">
+        <div class="bg-holder overlay overlay-light" style="background-image:url(../p/public/assets/img/gallery/header-bg.png);background-size:cover;">
+        </div>
 
     <script src="js/bootstrap.min.js"></script>
 </body>
