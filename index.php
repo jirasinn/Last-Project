@@ -16,21 +16,22 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <img href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Mahasarakham_University_Emblem.png/800px-Mahasarakham_University_Emblem.png"  width="55" height="72">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+          <svg class="bi me-2" width="50" height="42" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
         
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">ระบบใช้บริการห้องบริการคอมพิวเตอร์ สำนักคอมพิวเตอร์ มหาวิทยาลัยมหาสารคาม</a></li>
+          <li><h3><a href="#" class="nav-link px-2 text-secondary">ระบบใช้บริการห้องบริการคอมพิวเตอร์ สำนักคอมพิวเตอร์ มหาวิทยาลัยมหาสารคาม</a></h3></li>
         </ul> 
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
           <input type="search" class="form-control form-control-dark text-bg-secondary" placeholder="Search..." aria-label="Search">
         </form>
 
+        <div class="container">
         <div class="text-end">
           <button type="button" class="btn btn-outline-secondary ">EN</button>
           <button type="button" class="btn btn-outline-secondary ">TH</button>
-          <button type="button" class="btn btn-warning">Time</button>
+          <text type="text" class="btn btn-warning">Time</text>
 
 <!-- Date time -->
 <div id="local_time" class="btn btn-outline-secondary ">&nbsp;</div>
@@ -50,15 +51,17 @@ function local_date(now_time) {
 }
  
 setTimeout("local_date()",1000);
+
 //-->
 </script>
 <!-- End Date time -->
-
+</div>
         </div>
       </div>
     </div>
   </header>
 <!-- End head -->
+<div class="container">
 <section class="py-8 bg-light-gradient border-top border-info border-5">
         <div class="bg-holder overlay overlay-light" style="background-image:url(../p/public/assets/img/gallery/header-bg.png);background-size:cover;">
         </div>
@@ -75,24 +78,26 @@ setTimeout("local_date()",1000);
 <!--  -->
 
 <!--  -->
-
+<?php
+require_once("database.php");
+?>
 <!-- input id -->
+
 
 <div class="user-input-section">
   <section class="heading">
     <div class="title">ลงชื่อเข้าใช้งาน</div>
-    <div class="sub-title">กรอกรหัสนิสิต</div>
+    <div class="sub-title" >กรอกรหัสนิสิต</div>
   </section>
   <section class="user-input">
     <input type="text" placeholder="Type something..." name="input_text" id="input_text" autocomplete="off">
-    <button class="button" type="submit">Generate<i class="fa-solid fa-rotate"></i></button>
+    <button class="button" type="submit" id="signin" name="signin">SIGN IN<i class="fa-solid fa-rotate"></i></button>
   </section>
 </div>
-<div class="container">
 <div class="qr-code-container">
   <div class="qr-code" style></div>
 </div>
- </div>
+
 <!-- End input -->
 
   <!-- <div class="container" style="width: 25rem;">
@@ -112,32 +117,32 @@ setTimeout("local_date()",1000);
 
 
 
-<?php
-require_once("database.php");
-  $sql = "select * from students where s_id='".@$_GET['s_id']."' ";
-	$rs = mysqli_query($conn, $sql) ;
-	$data = mysqli_fetch_array($rs, MYSQLI_BOTH);
-	@$id = $_GET['id'] ;
-	
-	if(isset($_GET['s_id'])) {
-		$_SESSION['st_id'][$id] = $data['s_id'];
-    $_SESSION['sc_id'][$id] = $data['c_id'];
-		$_SESSION['st_name'][$id] = $data['s_name'];
 
-	}
-
-  ?>
 
 
 <!-- กรอบขวา -->
       <div class="bg-body-tertiary border rounded-3">
       <br>  
-      <!--  -->
+
+<!--  -->
       <form action="" method="post" enctype="multipart/form-data">
     <div class="mb-3">
     	<label  class="form-label">รายชื่อนิสิต</label>
         <show class="form-control" type="text" placeholder="รายชื่อนิสิต" name="student_name" value="<?=$data['st_id']?>">
         
+        <!--  -->
+
+        <?php
+require_once("database.php");
+  $signin = $_POST["signin"];
+  $sql = "select * from students where s_id LIKE '%" .$result = $conn->query($conn);
+  $result = mysqli_query($conn, $sql);
+	
+$conn->close();
+?>
+
+
+        <!--  -->
         <?php
 // 	include("database.php");
  
@@ -179,9 +184,12 @@ require_once("database.php");
 <section class="py-8 bg-light-gradient border-bottom border-info border-5">
         <div class="bg-holder overlay overlay-light" style="background-image:url(../p/public/assets/img/gallery/header-bg.png);background-size:cover;">
         </div>
+</div>
 
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
         <script src="script.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
