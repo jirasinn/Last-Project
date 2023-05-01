@@ -1,5 +1,3 @@
-<meta charset="utf-8">
-
 <?php
 $host = "localhost";
 $user = "root";
