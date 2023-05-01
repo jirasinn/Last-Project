@@ -1,57 +1,31 @@
-let btn = document.querySelector(".button");
-let qr_code_element = document.querySelector(".qr-code");
+$(document).ready(function () {
+  var qrcode_obj = new QRCode(document.getElementById("image_qrcode"), "");
 
-btn.addEventListener("click", () => {
-  let user_input = document.querySelector("#input_text");
-  if (user_input.value != "") {
-    if (qr_code_element.childElementCount == 0) {
-      generate(user_input);
-    } else {
-      qr_code_element.innerHTML = "";
-      generate(user_input);
-    }
-  } else {
-    console.log("not valid input");
-    qr_code_element.style = "display: none";
-  }
-});
-
-function generate(user_input) {
-  qr_code_element.style = "";
-
-  var qrcode = new QRCode(qr_code_element, {
-    text: `${user_input.value}`,
-    width: 180, //128
-    height: 180,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H
+  // เช็ค event การคลิกปุ่ม
+  $("#sign_in_button").on("click", () => {
+    genQrcode();
   });
 
-  let download = document.createElement("button");
-  qr_code_element.appendChild(download);
+  $("#student_code").on("keyup", function (event) {
+    var keycode = event.keyCode ? event.keyCode : event.which;
+    if (keycode == "13") genQrcode();
+  });
 
-  let download_link = document.createElement("a");
-  download_link.setAttribute("download", "qr_code.png");
-  download_link.innerHTML = `Download <i class="fa-solid fa-download"></i>`;
-
-  download.appendChild(download_link);
-
-  let qr_code_img = document.querySelector(".qr-code img");
-  let qr_code_canvas = document.querySelector("canvas");
-
-  if (qr_code_img.getAttribute("src") == null) {
-    setTimeout(() => {
-      download_link.setAttribute("href", `${qr_code_canvas.toDataURL()}`);
-    }, 300);
-  } else {
-    setTimeout(() => {
-      download_link.setAttribute("href", `${qr_code_img.getAttribute("src")}`);
-    }, 300);
+  function genQrcode() {
+    var code = $("#student_code").val();
+    $("#student_code").val("");
+    qrcode_obj.clear(); // ล้างค่าเดิม
+    qrcode_obj.makeCode(code); // สร้างจากข้อความใหม่ที่ส่งมา
+    getMember(code);
   }
 
-}
-
-generate({
-  value: "https://murtuzaalisurti.github.io/qr"
+  function getMember(student_code) {
+    // อ่านจาก API
+    $.post("datas.json.php",{ code:student_code })
+    .done((res) => {
+      var obj = jQuery.parseJSON(res);
+      $("#text_name").val(obj.student_name);
+      $("#text_code").val(obj.student_code);
+    });
+  }
 });
