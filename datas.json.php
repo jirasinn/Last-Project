@@ -1,6 +1,5 @@
 <?php
 require_once("database.php");
-// 63010912568
 $datas["student_code"] = "";
 $datas["student_name"] = "";
 
